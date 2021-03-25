@@ -19,7 +19,7 @@ import { MycompanyComponent } from './mycompany/mycompany.component';
 import { DocumentComponent } from './document/document.component';
 import { ProfilleComponent } from './profille/profille.component';
 import { KalendarComponent } from './kalendar/kalendar.component';
-import { TaskboardComponent } from './taskboard/taskboard.component';
+
 import { AvatarComponent } from './avatar/avatar.component';
 import { KontaktsComponent } from './kontakts/kontakts.component';
 
@@ -42,7 +42,7 @@ import { KontaktsComponent } from './kontakts/kontakts.component';
     DocumentComponent,
     ProfilleComponent,
     KalendarComponent,
-    TaskboardComponent,
+
     AvatarComponent,
     KontaktsComponent
   ],

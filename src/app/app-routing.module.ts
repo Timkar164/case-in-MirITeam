@@ -16,7 +16,7 @@ import { MycompanyComponent} from './mycompany/mycompany.component';
 import { DocumentComponent} from './document/document.component';
 import {ProfilleComponent} from './profille/profille.component';
 import {KalendarComponent} from './kalendar/kalendar.component';
-import {TaskboardComponent} from './taskboard/taskboard.component';
+
 import {KontaktsComponent} from './kontakts/kontakts.component';
 
 const sysroutes: Routes = [
@@ -32,7 +32,7 @@ const sysroutes: Routes = [
   {path: 'doc' , component: DocumentComponent},
   {path: 'user' , component: ProfilleComponent},
   {path: 'kalendar' , component: KalendarComponent},
-  {path:'task', component: TaskboardComponent},
+
   {path:'contacts', component: KontaktsComponent}
 
 
