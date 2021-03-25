@@ -15,47 +15,48 @@ line-height: 22px;">Лавка пряников</p>
       <form >
         <div class="input-group">
           <span class="input-group-addon">Кого?</span>
-          <input id="msg" type="text" class="form-control" name="msg" placeholder="Search chat" style="size: 50px">
+          <input id="msg" type="text" class="form-control" name="msg" placeholder="Search chat" style="size: 50px" (value)="inputt" (input)="inputt = $event.target.value">
         </div>
 
         <div class="form-group">
           <label for="sel1">За что поблагодарить?:</label>
-          <select class="form-control" id="sel1" >
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
+          <select class="form-control" id="sel1" (value)="a1" (input)="a1 = $event.target.value">
+            <option>за подготовку документов</option>
+            <option>за хорошее настроение</option>
+            <option>помощь</option>
+            <option>хорошее настроение</option>
           </select>
         </div>
 
         <div class="form-group">
           <label for="comment">Комментарий:</label>
-          <textarea class="form-control" rows="5" id="comment"></textarea>
+          <textarea class="form-control" rows="5" id="comment" (value)="comment" (input)="comment = $event.target.value"></textarea>
         </div>
+        <button (click)="mypresent(inputt,a1,comment)">Поблагодарить</button>
       </form>
       </div>
 
        <div class="mypresent">
 
-
+      <div  *ngFor="let items of mascard">
       <div class="mychart">
 
         <div class="container-fluid text-center" style="margin-top: 20px">
           <div class="row content">
             <div class="col-sm-2 sidenav">
-              <img src="assets/images/v1_65.png" alt="Avatar" class="avatar" style="width: 100%; border-radius: 75px; margin-bottom: 10px">
+              <img src="{{items.img}}" alt="Avatar" class="avatar" style="width: 100%; border-radius: 75px; margin-bottom: 10px">
             </div>
             <div class="col-sm-8 text-left" style="font-size: 20px">
 
-              <p><span style="font-weight: bold">Мария Иванова</span> поблагодарила Ивана Серова за надежность</p>
-               <p> Спасибо за быструю подготовку документов!</p>
+              <p><span style="font-weight: bold">{{items.user}}</span> поблагодарила {{items.name}} {{items.type}}</p>
+               <p> {{items.coment}}</p>
 
             </div>
             <div class="col-sm-2 sidenav">
 
               <p style="padding-left: 70px"><i class="fas fa-heart" style="font-size: 30px; color: red"></i></p>
               <div class="col-sm-2 sidenav">
-                    <p>23.03.2021</p>
+                    <p>{{items.date}}</p>
               </div>
               <div class="col-sm-2 sidenav">
 
@@ -73,37 +74,6 @@ line-height: 22px;">Лавка пряников</p>
 
 
 
-           <div class="mychart">
-
-             <div class="container-fluid text-center" style="margin-top: 20px">
-               <div class="row content">
-                 <div class="col-sm-2 sidenav">
-                   <img src="assets/images/v1_65.png" alt="Avatar" class="avatar" style="width: 100%; border-radius: 75px; margin-bottom: 10px">
-                 </div>
-                 <div class="col-sm-8 text-left" style="font-size: 20px">
-
-                   <p><span style="font-weight: bold">Мария Иванова</span> поблагодарила Ивана Серова за надежность</p>
-                   <p> Спасибо за быструю подготовку документов!</p>
-
-                 </div>
-                 <div class="col-sm-2 sidenav">
-
-                   <p style="padding-left: 70px"><i class="fas fa-heart" style="font-size: 30px; color: red"></i></p>
-                   <div class="col-sm-2 sidenav">
-                     <p>23.03.2021</p>
-                   </div>
-                   <div class="col-sm-2 sidenav">
-
-                   </div>
-
-                 </div>
-               </div>
-             </div>
-             <div class="input-group" style="margin-left: 250px; padding-bottom: 20px; padding-right: 20px">
-               <span class="input-group-addon">Кого?</span>
-               <input id="msg" type="text" class="form-control" name="msg" placeholder="Search chat" style="size: 50px">
-             </div>
-           </div>
 
 
 
@@ -112,7 +82,7 @@ line-height: 22px;">Лавка пряников</p>
 
 
 
-
+       </div>
 
     </div>
     <div class="col-sm-4" style="width: 20%">
@@ -122,7 +92,7 @@ line-height: 22px;">Лавка пряников</p>
         <div class="container-fluid text-center" style="margin-top: 20px">
           <div class="row content">
             <div class="col-sm-8 text-left" style="font-size: 14px; margin-left: px">
-              <h1 style="font-size: 20px">Екатерина Петрова</h1>
+              <h1 style="font-size: 20px">Владимир Жуков</h1>
               <p>Душа офиса</p>
 
 
@@ -167,11 +137,11 @@ line-height: 22px;">Лавка пряников</p>
         <div class="rigtchat" style="margin-top: 10px">
 
           <p class="myp" style="padding-top: 15px">Могу потратить</p>
-          <p>18</p>
+          <p>{{list1}}</p>
           <hr>
 
           <p class="myp" >Могу отдать</p>
-          <p style="padding-bottom: 15px">30</p>
+          <p style="padding-bottom: 15px">{{list2}}</p>
         </div>
 
 

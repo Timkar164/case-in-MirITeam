@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class ChatComponent implements OnInit {
   public inputt="";
   public usermas = [{"img":'assets/images/tany.jpg', "name":"Татьяна Бородина","time":"8:35am","text":"Вы доделали отчет?"},{"img":'assets/images/tim.jpg', "name":"Тимофей Карклин","time":"9:35am","text":"Я скинул документы на почту шефу"},{"img":'assets/images/nik.jpg', "name":"Никита Мараханов","time":"9:40am","text":"Восколько начнем проект?"},{"img":'assets/images/aleks.jpg', "name":"Александр Серышев","time":"10:35am","text":"что вы имелли ввиду?"}];
-  public messages = [{"type": false, "img": "assets/images/v1_921.png","time":"7:30am","text":"Я ваш личный помошник, обращайтесь"}];
+  public messages = [{"type": false, "img": "assets/images/v1_921.png","time":"7:30am","text":"Я ваш личный помошник, обращайтесь. Напишите мне 'что ты умеешь?'"}];
   constructor() { }
 
   ngOnInit() {
