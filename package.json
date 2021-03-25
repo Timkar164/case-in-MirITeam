@@ -1,6 +1,9 @@
 {
   "name": "case-in",
   "version": "0.0.0",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "ng": "node app.js",
     "start": "ng serve",
