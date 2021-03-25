@@ -7,8 +7,8 @@ import {Router, Routes} from '@angular/router';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
-  public name: string;
-  public pas: string;
+  public name = 'MirITeam';
+  public pas='casein2021';
   constructor(private router: Router) { }
 
   ngOnInit() {
