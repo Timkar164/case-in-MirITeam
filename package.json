@@ -2,15 +2,20 @@
   "name": "case-in",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
+    "ng": "node app.js",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "heroku-postbuild": "ng build --prod",
+    "postinstall": "ng build --prod"
   },
   "private": true,
   "dependencies": {
+    "compression": "*",
+    "express":"*",
+    "body-parser":"*",
     "@angular/animations": "~8.2.5",
     "@angular/common": "~8.2.5",
     "@angular/compiler": "~8.2.5",

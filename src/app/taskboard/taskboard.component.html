@@ -1,0 +1,67 @@
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700" rel="stylesheet">
+
+
+<p style="padding-left: 3%;
+padding-top: 2%;
+font-family: inherit;
+font-style: normal;
+font-weight: normal;
+color: #84919A;
+font-size: medium;
+line-height: 16px;">Учебная комната > Мои курсы</p>
+
+
+<p style="padding-left: 3%;font-family: inherit;
+font-style: normal;
+font-weight: normal;
+color: black;
+font-size: x-large;
+line-height: 22px;"><b>Учебная комната</b></p>
+
+<div class="wrapper" style="weight: 70%">
+  <div class="left_block" style="float:left; weight: 40%; padding-left: 3%; padding-right: 7%">
+    <p action="" method="post" class="search">
+      <input type="search" name="" placeholder="Search" class="input" />
+    </p>
+  </div>
+
+  <div class="right_block" style="padding-left: 15%">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Мои курсы</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Рекомендации</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Все курсы</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="app-taskboard" *ngIf="tasks">
+  <div class="h-100">
+    <div class="app-taskboard-wrapper" *ngFor="let task of tasks">
+      <div class="app-taskboard-list">
+        <div class="app-taskboard-header">{{task}}</div>
+        <div class="app-taskboard-cards">
+          <div>
+            <div class="app-taskboard-task error" *ngFor="let taskboardItem of taskboard[task]">
+              <div class="p-2">
+                <p class="mb-0">{{taskboardItem.title}}</p>
+                <small class="text-muted d-block mb-2">{{taskboardItem.description}}</small>
+                <div class="cover" style="height: 150px;" *ngIf="taskboardItem.images">
+
+                    <div *ngFor="let image of taskboardItem.images">
+                      <div class="image" [ngStyle]="{'background-image': 'url('+image+')', height: '150px'}"></div>
+                    </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
