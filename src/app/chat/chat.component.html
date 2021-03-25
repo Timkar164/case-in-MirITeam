@@ -77,12 +77,12 @@
               <!-- Profile -->
               <div class="d-flex align-items-center profile">
                 <div class="avatar img-60 position-relative mr-3">
-                  <img src="assets/img/avatar/m14.png" alt="">
+                  <img src="assets/images/v1_921.png" alt="">
                   <span class="avatar-status bg-teal c1-bg"></span>
                 </div>
                 <div class="content">
-                  <h4 class="name mb-1">Abrilay Khatun</h4>
-                  <p class="font-14">Active Now</p>
+                  <h4 class="name mb-1">Личный помошник Ботя</h4>
+                  <p class="font-14">сейчас в сети</p>
                 </div>
               </div>
               <!-- End Profile -->
@@ -127,71 +127,22 @@
           <!-- Aside Body -->
           <div class="aside-body" data-trigger="scrollbar">
             <div class="tab-content">
-              <div class="" style="display: block" id="tab_messages">
+              <div class="" style="display: block" id="tab_messages" *ngFor="let mes of usermas">
                 <!-- Message -->
                 <a href="#" class="message media align-items-center">
                   <div class="figure">
-                    <img src="assets/img/avatar/m4.png" alt="">
+                    <img src="{{mes.img}}" alt="">
                     <span class="avatar-status bg-teal"></span>
                   </div>
                   <div class="content media-body">
                     <div class="d-flex align-items-center justify-content-between mb-1">
-                      <h4 class="name">Terry Estrada <span class="ml-2 c3">(5)</span></h4>
-                      <p class="time bold">8:35am</p>
+                      <h4 class="name">{{mes.name}}<span class="ml-2 c3"></span></h4>
+                      <p class="time bold">{{mes.time}}</p>
                     </div>
-                    <p class="main-text">Why Do All Websites Look the Sameakei...</p>
+                    <p class="main-text">{{mes.text}}</p>
                   </div>
                 </a>
                 <!-- End Message -->
-
-                <!-- Message -->
-                <a href="#" class="message active media align-items-center">
-                  <div class="figure">
-                    <img src="assets/img/avatar/m5.png" class="img-50" alt="">
-                    <span class="avatar-status bg-teal"></span>
-                  </div>
-                  <div class="content media-body">
-                    <div class="d-flex align-items-center justify-content-between mb-1">
-                      <h4 class="name">Sandra Jones</h4>
-                      <p class="time bold">8:35am</p>
-                    </div>
-                    <p class="main-text">Why Do All Websites Look the Sameakei...</p>
-                  </div>
-                </a>
-                <!-- End Message -->
-
-                <!-- Message -->
-                <a href="#" class="message media align-items-center">
-                  <div class="figure">
-                    <img src="assets/img/avatar/m3.png" alt="">
-                    <span class="bg-teal"></span>
-                  </div>
-                  <div class="content media-body">
-                    <div class="d-flex align-items-center justify-content-between mb-1">
-                      <h4 class="name">Niko Jacobs</h4>
-                      <p class="time bold">8:35am</p>
-                    </div>
-                    <p class="main-text">Why Do All Websites Look the Sameakei...</p>
-                  </div>
-                </a>
-                <!-- End Message -->
-
-                <!-- Message -->
-                <a href="#" class="message media align-items-center">
-                  <div class="figure">
-                    <img src="assets/img/avatar/m15.png" alt="">
-                    <span class="avatar-status bg-teal"></span>
-                  </div>
-                  <div class="content media-body">
-                    <div class="d-flex align-items-center justify-content-between mb-1">
-                      <h4 class="name">Frazer Moyer</h4>
-                      <p class="time bold">8:35am</p>
-                    </div>
-                    <p class="main-text">Why Do All Websites Look the Sameakei...</p>
-                  </div>
-                </a>
-                <!-- End Message -->
-
 
 
 
@@ -214,12 +165,12 @@
                   <!-- Profile -->
                   <div class="d-flex align-items-center profile">
                     <div class="avatar position-relative mr-3">
-                      <img src="assets/img/avatar/m5.png" class="img-50" alt="">
+                      <img src="assets/images/v1_921.png" class="img-50" alt="">
                       <span class="avatar-status bg-teal"></span>
                     </div>
                     <div class="content">
-                      <h4 class="name mb-1">Sandra Jones</h4>
-                      <p class="font-14">Active Now</p>
+                      <h4 class="name mb-1">Личный помошник Ботя</h4>
+                      <p class="font-14">Сейчас в сети</p>
                     </div>
                   </div>
                   <!-- End Profile -->
@@ -261,76 +212,44 @@
               <!-- Chat Body -->
               <div class="chat-body pb-0" data-trigger="scrollbar">
                 <!-- Chat Messages -->
-                <div class="chat-messages d-flex flex-column justify-content-end">
+                <div class="chat-messages d-flex flex-column justify-content-end" >
                   <!-- Message Item -->
-                  <div class="message-item friend">
+                  <div *ngFor="let item of messages">
+                  <div class="message-item friend" *ngIf="item.type">
                     <div class="avatar mr-20">
-                      <img src="assets/img/avatar/m14.png" class="img-50" alt="avatar">
+                      <img src="{{item.img}}" class="img-50" alt="avatar">
                       <span class="avatar-status bg-teal"></span>
                     </div>
                     <div class="content">
                       <div class="bubble">
-                        <p>Pretium gravida enim, vel maximus</p>
+                        <p>{{item.text}}</p>
                       </div>
-                      <div class="bubble">
-                        <p>Sed rhoncus eget ex id egestas. Nam nec nisl placerat, tempus erat.</p>
-                      </div>
+
                       <h6 class="font-12 c4 mt-n1">
-                        <span>8:35pm</span>
+                        <span>{{item.time}}</span>
                       </h6>
                     </div>
                   </div>
                   <!-- End Message Item -->
 
                   <!-- Message Item -->
-                  <div class="message-item me">
+                  <div class="message-item me" *ngIf="!item.type">
                     <div class="avatar mr-20">
-                      <img src="assets/img/avatar/m5.png" class="img-50" alt="avatar">
+                      <img src="{{item.img}}" class="img-50" alt="avatar">
                       <span class="avatar-status bg-teal"></span>
                     </div>
                     <div class="content">
                       <div class="bubble">
-                        <p>ligula fermentum a. Sed rhoncus eget ex id egestas. <br /> Duis pretium gravida enim, vel maximus</p>
+                        <p>{{item.text}}</p>
                       </div>
                       <h6 class="font-12 c4 mt-n1">
-                        <span>8:35pm</span>
+                        <span>{{item.time}}</span>
                       </h6>
                     </div>
                   </div>
                   <!-- End Message Item -->
-
-                  <!-- Message Item -->
-                  <div class="message-item friend">
-                    <div class="avatar mr-20">
-                      <img src="assets/img/avatar/m14.png" class="img-50" alt="avatar">
-                      <span class="avatar-status bg-teal"></span>
-                    </div>
-                    <div class="content">
-                      <div class="bubble">
-                        <p>Pretium gravida enim, vel maximus</p>
-                      </div>
-                      <h6 class="font-12 c4 mt-n1">
-                        <span>8:35pm</span>
-                      </h6>
-                    </div>
                   </div>
-                  <!-- End Message Item -->
 
-                  <!-- Message Item -->
-                  <div class="message-item me">
-                    <div class="avatar mr-20">
-                      <img src="assets/img/avatar/m5.png" class="img-50" alt="avatar">
-                      <span class="avatar-status bg-teal"></span>
-                    </div>
-                    <div class="content">
-                      <div class="bubble">
-                        <p>Duis pretium gravida enim, vel maximus ligula fermentum a. Sed rhoncus eget ex id egestas. Nam nec nisl placerat, tempus erat a, condimentum metus. Curabitur nulla nisia.</p>
-                      </div>
-                      <h6 class="font-12 c4 mt-n1">
-                        <span>8:35pm</span>
-                      </h6>
-                    </div>
-                  </div>
                   <!-- End Message Item -->
                 </div>
                 <!-- End Chat Messages -->
@@ -338,7 +257,7 @@
               <!-- End  Chat Body -->
 
               <!-- Chat Footer -->
-              <div class="chat-footer d-flex align-items-end pt-1" style="margin-top: 40px">
+              <div class="chat-footer d-flex align-items-end pt-1" style="margin-top: 120px">
                 <!-- Voice Msg -->
                 <div class="voice-msg mr-20">
                   <a href="#"><img src="assets/img/svg/voice-msg.svg" alt="" class="svg"></a>
@@ -353,16 +272,17 @@
                 <!-- End Attach File -->
 
                 <!-- Form -->
-                <form action="#" method="POST" class="flex-grow mr-20 radius-10">
-                  <!-- <input type="text" class="theme-input-style"> -->
-                  <textarea name="chat_msg" class="theme-input-style style--three"></textarea>
+                <form action="#" method="GET" class="flex-grow mr-20 radius-10">
+
+                  <input type="text" class="theme-input-style" (value)="inputt" (input)="inputt = $event.target.value">
+                  <!--<textarea name="chat_msg" class="theme-input-style style--three" (change)="sendmes(input)">{{input}}</textarea>-->
                 </form>
                 <!-- End Form -->
 
                 <div class="d-flex align-items-center">
                   <!-- Submit -->
                   <div class="submit mr-20">
-                    <a href="#"><img src="assets/img/svg/send.svg" alt="" class="svg"></a>
+                    <img src="assets/img/svg/send.svg" alt="" class="svg" (click)="sendmes(inputt)">
                   </div>
                   <!-- End Submit -->
 

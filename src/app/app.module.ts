@@ -22,6 +22,7 @@ import { KalendarComponent } from './kalendar/kalendar.component';
 
 import { AvatarComponent } from './avatar/avatar.component';
 import { KontaktsComponent } from './kontakts/kontakts.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { KontaktsComponent } from './kontakts/kontakts.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
