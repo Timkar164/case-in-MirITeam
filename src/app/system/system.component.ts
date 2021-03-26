@@ -13,7 +13,7 @@ export class SystemComponent implements OnInit {
   ngOnInit() {
     this.userId = window.localStorage.getItem('user');
     console.log(this.userId);
-    this.userId='true';
+
     if (this.userId!='true'){
       this.router.navigate(['/auth']);
     }
