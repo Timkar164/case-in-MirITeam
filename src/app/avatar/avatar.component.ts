@@ -47,7 +47,7 @@ import { randomStatus } from "../helpers";
         <span
           class="d-flex align-items-center justify-content-center w-100 h-100 text-light rounded-circle"
           [ngClass]="'bg-' + getStatus()"
-          >{{ name.charAt(0) }}</span
+          ></span
         >
         <span
           class="border-white status"

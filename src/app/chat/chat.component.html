@@ -75,7 +75,7 @@
               <!-- End Dropdown Button -->
 
               <!-- Profile -->
-              <div class="d-flex align-items-center profile">
+              <div class="d-flex align-items-center profile" (click)="go_to_bot({'name':'Личный помошник Ботя','img':'assets/images/v1_921.png','id':200})">
                 <div class="avatar img-60 position-relative mr-3">
                   <img src="assets/images/v1_921.png" alt="">
                   <span class="avatar-status bg-teal c1-bg"></span>
@@ -127,19 +127,19 @@
           <!-- Aside Body -->
           <div class="aside-body" data-trigger="scrollbar">
             <div class="tab-content">
-              <div class="" style="display: block" id="tab_messages" *ngFor="let mes of usermas">
+              <div class="" style="display: block" id="tab_messages" *ngFor="let mes of chats">
                 <!-- Message -->
-                <a href="#" class="message media align-items-center">
+                <a  class="message media align-items-center" (click)="changedialog(mes)">
                   <div class="figure">
-                    <img src="{{mes.img}}" alt="">
+                    <img src="{{mes.img}}" alt="" width="50px">
                     <span class="avatar-status bg-teal"></span>
                   </div>
                   <div class="content media-body">
                     <div class="d-flex align-items-center justify-content-between mb-1">
                       <h4 class="name">{{mes.name}}<span class="ml-2 c3"></span></h4>
-                      <p class="time bold">{{mes.time}}</p>
+                      <p class="time bold">8:35am</p>
                     </div>
-                    <p class="main-text">{{mes.text}}</p>
+                    <p class="main-text">{{mes.last}}</p>
                   </div>
                 </a>
                 <!-- End Message -->
@@ -165,11 +165,11 @@
                   <!-- Profile -->
                   <div class="d-flex align-items-center profile">
                     <div class="avatar position-relative mr-3">
-                      <img src="assets/images/v1_921.png" class="img-50" alt="">
+                      <img src="{{mainperson.img}}" class="img-50" alt="">
                       <span class="avatar-status bg-teal"></span>
                     </div>
                     <div class="content">
-                      <h4 class="name mb-1">Личный помошник Ботя</h4>
+                      <h4 class="name mb-1">{{mainperson.name}}</h4>
                       <p class="font-14">Сейчас в сети</p>
                     </div>
                   </div>
@@ -214,10 +214,10 @@
                 <!-- Chat Messages -->
                 <div class="chat-messages d-flex flex-column justify-content-end" >
                   <!-- Message Item -->
-                  <div *ngFor="let item of messages">
-                  <div class="message-item friend" *ngIf="item.type">
+                  <div *ngFor="let item of maindialog">
+                  <div class="message-item friend" *ngIf="item.receiver==mainuser.id">
                     <div class="avatar mr-20">
-                      <img src="{{item.img}}" class="img-50" alt="avatar">
+                      <img src="{{mainperson.img}}" class="img-50" alt="avatar">
                       <span class="avatar-status bg-teal"></span>
                     </div>
                     <div class="content">
@@ -233,9 +233,9 @@
                   <!-- End Message Item -->
 
                   <!-- Message Item -->
-                  <div class="message-item me" *ngIf="!item.type">
+                  <div class="message-item me" *ngIf="item.sender==mainuser.id">
                     <div class="avatar mr-20">
-                      <img src="{{item.img}}" class="img-50" alt="avatar">
+                      <img src="{{mainuser.img}}" class="img-50" alt="avatar">
                       <span class="avatar-status bg-teal"></span>
                     </div>
                     <div class="content">

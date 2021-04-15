@@ -7,11 +7,11 @@
           <div class="d-flex justify-content-between align-items-center p-3">
             <div class="d-flex align-items-center">
               <a href="#" class="widget-icon-xlg">
-                <app-avatar src="assets/images/avatar.jpg" size="64" name="avatar"></app-avatar>
+                <app-avatar src="{{mainuser.img}}" size="64" name="avatar"></app-avatar>
               </a>
               <div class="d-inline-block px-3">
                 <h5 class="my-0 text-light">
-                  <p class="fw-400" style="font-size: large;">Владимир Жуков</p>
+                  <p class="fw-400" style="font-size: large;">{{mainuser.name}}</p>
                 </h5>
                 <small class="text-light m-r" style="font-size: medium;">Душа отдела</small>
               </div>
@@ -50,16 +50,16 @@
                 <div class="card pb-3 m-0" *ngFor="let item of activity">
                   <div class="d-flex align-items-start justify-content-start">
                     <div class="header">
-                      <app-avatar [src]="item.avatar" size="48" [name]="item.title"></app-avatar>
+                      <img src="{{item.img}}" width="48px" height="48px" style="border-radius: 24px">
                     </div>
                     <div class="pl-3">
                       <span class="d-block pb-2">
                         <small class="text-muted">
                           <span style="font-size: medium; ">{{item.subtitle}}</span>
                         </small>
-                        <span class="d-block" style="font-size: medium; padding-top: 2%">{{item.title}}</span>
+                        <span class="d-block" style="font-size: medium; padding-top: 2%">{{item.name}}</span>
                       </span>
-                      <p style="font-size: small; ">{{item.body}}</p>
+                      <p style="font-size: small; ">{{item.actions}}</p>
                     </div>
                   </div>
                 </div>
@@ -76,17 +76,17 @@
               <div class="d-flex mb-2 justify-content-around">
                 <div class="w-50">
                   <p class="d-block text-muted" >Телефон</p>
-                  <span>+7(920)0786452</span>
+                  <span>{{mainuser.phone}}</span>
                 </div>
                 <div class="w-50">
                   <p class="d-block text-muted">Возраст</p>
-                  <span>20</span>
+                  <span>{{mainuser.age}}</span>
                 </div>
               </div>
               <div class="d-flex mb-2 justify-content-around">
                 <div class="w-50">
                   <p class="d-block text-muted">День рождения</p>
-                  <span>09.06.2000</span>
+                  <span>{{mainuser.bdate}}</span>
                 </div>
                 <div class="w-50">
                   <p class="d-block text-muted">Страна</p>
@@ -96,7 +96,7 @@
               <div class="d-flex mb-2 justify-content-around">
                 <div class="w-50">
                   <p class="d-block text-muted">Профессия</p>
-                  <span>UX дизайнер</span>
+                  <span>{{mainuser.post}}</span>
                 </div>
                 <div class="w-50">
                   <p class="d-block text-muted">Рабочий телефон</p>
@@ -106,11 +106,11 @@
               <div class="d-flex mb-2 justify-content-around">
                 <div class="w-50">
                   <p class="d-block text-muted">Twitter</p>
-                  <span>@timka</span>
+                  <span>{{mainuser.twitter}}</span>
                 </div>
                 <div class="w-50">
                   <p class="d-block text-muted">Facebook</p>
-                  <span>timkar164</span>
+                  <span>{{mainuser.facebook}}</span>
                 </div>
               </div>
             </div>
@@ -118,11 +118,7 @@
                 <p style="font-size: medium; padding-left: 5%; padding-bottom: 0"><b>Быстрая биография</b></p>
 
             <div class="card-body">
-              <p style="font-size: small; padding-left: 4%; ">Я не умный, я просто ношу очки; <br>
-Мое хобби – начинать завтрак, обед и ужин с шоколадного десерта;<br>
-Сначала я пью кофе. Затем я делаю все остальное;<br>
-Раньше я думал, что я немного нерешительный, но теперь я не совсем уверен;<br>
-Одаренный болтун и едок мороженого;</p>
+              <p style="font-size: small; padding-left: 4%; ">{{mainuser.biography}}</p>
             </div>
 
           </div>
@@ -134,7 +130,8 @@
               <div class="row" *ngIf="contacts">
                 <div class="col-6" *ngFor="let contact of contacts">
                   <a class="w-100 d-flex flex-row align-items-center nav-link">
-                    <app-avatar [src]="contact.avatar" size="48" [name]="contact.name" [status]="getStatus()"></app-avatar>
+                    <img src="{{contact.img}}" width="48px" height="48px" style="border-radius: 24px">
+
                     <span class="ml-3">
                       <span class="d-block" style="font-size: medium; ">{{contact.name}}</span>
                       <small class="text-muted">
@@ -231,16 +228,16 @@
           <div class="d-flex">
             <div class="w-50">
               <h4 class="m-0">
-                <span class="fw-400" style="font-size: large">Владимир Жуков</span>
+                <span class="fw-400" style="font-size: large">{{mainuser.name}}</span>
               </h4>
               <p style="font-size: x-small">Душа отдела</p>
-              <p class="my-2" style="font-size: small">UX дизайнер</p>
-              <a  class="mt-0 d-block" style="font-size: small">timkar164@gmail.com</a>
-			  <a  class="mt-1 d-block" style="font-size: small">+7(920)0786452</a>
+              <p class="my-2" style="font-size: small">{{mainuser.post}}</p>
+              <a  class="mt-0 d-block" style="font-size: small">{{mainuser.email}}</a>
+			  <a  class="mt-1 d-block" style="font-size: small">{{mainuser.phone}}</a>
               <a href="www.rosatom.ru" class="mt-1 d-block" style="font-size: small">www.rosatom.ru</a>
             </div>
             <div class="w-50 text-center">
-              <app-avatar src="assets/images/avatar.jpg" size="128" name="Gerald Morris"></app-avatar>
+              <app-avatar src="{{mainuser.img}}" size="128" name="Gerald Morris"></app-avatar>
               <div class="m-1 text-center">
 
               </div>
@@ -252,13 +249,13 @@
           <div class="text-center row">
             <div class="col">
               <h2 class="m-0">
-                <b>1024</b>
+                <b>{{mainuser.int1}}</b>
               </h2>
               <small>Подписчики</small>
             </div>
             <div class="col">
               <h2 class="m-0">
-                <b>569</b>
+                <b>{{mainuser.int2}}</b>
               </h2>
               <small>Подписки</small>
             </div>
@@ -274,7 +271,7 @@
 
             <p style="font-size: medium; padding-left: 5%; padding-bottom: 0"><b>Обо мне</b></p>
 
-          <p style="font-size: small; padding-left: 5%; padding-top: 0">Всем привет! Меня зовут Владимир, мне 18 лет. Я — увлекающийся человек, поэтому у меня много разных хобби. В детстве я ходил в художественную школу, но потом бросил. Хотя я и до сих пор люблю рисовать, но сейчас мне больше нравится музыка..</p>
+          <p style="font-size: small; padding-left: 5%; padding-top: 0">{{mainuser.publication}}</p>
 
       </div>
     </div>

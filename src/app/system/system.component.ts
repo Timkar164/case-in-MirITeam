@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import { AppService} from '../app.service';
 
 @Component({
   selector: 'app-system',
@@ -8,7 +9,7 @@ import {Router} from "@angular/router";
 })
 export class SystemComponent implements OnInit {
   public userId;
-  constructor(private router: Router) { }
+  constructor(private router: Router, private servise: AppService) { }
 
   ngOnInit() {
     this.userId = window.localStorage.getItem('user');
@@ -17,6 +18,11 @@ export class SystemComponent implements OnInit {
     if (this.userId!='true'){
       this.router.navigate(['/auth']);
     }
+    //this.servise.get_users([1,2,4]).subscribe(value => {
+     // console.log(value);
+
+
+    //});
   }
 
 }

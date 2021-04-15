@@ -44,12 +44,12 @@ line-height: 22px;">Лавка пряников</p>
         <div class="container-fluid text-center" style="margin-top: 20px">
           <div class="row content">
             <div class="col-sm-2 sidenav">
-              <img src="{{items.img}}" alt="Avatar" class="avatar" style="width: 100%; border-radius: 75px; margin-bottom: 10px">
+              <img src="{{items.img}}" alt="Avatar" class="avatar" width="50px" height="80px" style="width: 100%; border-radius: 75px; margin-bottom: 10px">
             </div>
             <div class="col-sm-8 text-left" style="font-size: 20px">
 
-              <p><span style="font-weight: bold">{{items.user}}</span> поблагодарила {{items.name}} {{items.type}}</p>
-               <p> {{items.coment}}</p>
+              <p><span style="font-weight: bold">{{items.maker}}</span> поблагодарила {{items.person}} {{retype(items.type)}}</p>
+               <p> {{items.comment}}</p>
 
             </div>
             <div class="col-sm-2 sidenav">
@@ -92,13 +92,13 @@ line-height: 22px;">Лавка пряников</p>
         <div class="container-fluid text-center" style="margin-top: 20px">
           <div class="row content">
             <div class="col-sm-8 text-left" style="font-size: 14px; margin-left: px">
-              <h1 style="font-size: 20px">Владимир Жуков</h1>
+              <h1 style="font-size: 20px">{{mainuser.name}}</h1>
               <p>Душа офиса</p>
 
 
             </div>
             <div class="col-sm-2 sidenav">
-              <img src="assets/images/v1_921.png" alt="Avatar" class="avatar" style="width: 50px; border-radius: 25px">
+              <img src="{{mainuser.img}}" alt="Avatar" class="avatar" style="width: 50px; border-radius: 25px">
             </div>
 
             </div>

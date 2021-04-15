@@ -6,6 +6,180 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=3a7a39d1-2c17-4d64-91ab-fda8b6e7379a" type="text/javascript"></script>
+
+
+  <script>
+      ymaps.ready(function () {
+          var myMap = new ymaps.Map('map', {
+                  center: [55.751574, 37.573856],
+                  zoom: 11
+              }, {
+                  searchControlProvider: 'yandex#search'
+              }),
+
+              // Создаём макет содержимого.
+              MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
+                  '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
+              ),
+
+              myPlacemark1 = new ymaps.Placemark([55.739874, 37.623331], {
+                  hintContent: 'Собственный значок метки',
+                  balloonContent: 'улица Большая Ордынка, 24'
+              }, {
+                  // Опции.
+                  // Необходимо указать данный тип макета.
+                  iconLayout: 'default#image',
+                  // Своё изображение иконки метки.
+                  iconImageHref: 'assets/atom.png',
+                  // Размеры метки.
+                  iconImageSize: [30, 42],
+                  // Смещение левого верхнего угла иконки относительно
+                  // её "ножки" (точки привязки).
+                  iconImageOffset: [-5, -38]
+              }),
+
+              myPlacemark2 = new ymaps.Placemark([55.738201, 37.619477], {
+                  hintContent: 'Собственный значок метки',
+                  balloonContent: 'Старомонетный переулок, 26'
+              }, {
+                  // Опции.
+                  // Необходимо указать данный тип макета.
+                  iconLayout: 'default#image',
+                  // Своё изображение иконки метки.
+                  iconImageHref: 'assets/atom.png',
+                  // Размеры метки.
+                  iconImageSize: [30, 42],
+                  // Смещение левого верхнего угла иконки относительно
+                  // её "ножки" (точки привязки).
+                  iconImageOffset: [-5, -38]
+              }),
+
+              myPlacemark3 = new ymaps.Placemark([55.733107, 37.621830], {
+                  hintContent: 'Собственный значок метки',
+                  balloonContent: '2-й Казачий переулок, 11с1'
+              }, {
+                  // Опции.
+                  // Необходимо указать данный тип макета.
+                  iconLayout: 'default#image',
+                  // Своё изображение иконки метки.
+                  iconImageHref: 'assets/atom.png',
+                  // Размеры метки.
+                  iconImageSize: [30, 42],
+                  // Смещение левого верхнего угла иконки относительно
+                  // её "ножки" (точки привязки).
+                  iconImageOffset: [-5, -38]
+              }),
+
+              myPlacemark4 = new ymaps.Placemark([55.724266, 37.642806], {
+                  hintContent: 'Собственный значок метки',
+                  balloonContent: 'Летниковская улица, 10с5'
+              }, {
+                  // Опции.
+                  // Необходимо указать данный тип макета.
+                  iconLayout: 'default#image',
+                  // Своё изображение иконки метки.
+                  iconImageHref: 'assets/atom.png',
+                  // Размеры метки.
+                  iconImageSize: [30, 42],
+                  // Смещение левого верхнего угла иконки относительно
+                  // её "ножки" (точки привязки).
+                  iconImageOffset: [-5, -38]
+              }),
+
+              myPlacemark5 = new ymaps.Placemark([55.711316, 37.652768], {
+                  hintContent: 'Собственный значок метки',
+                  balloonContent: 'улица Ленинская Слобода, 26с5'
+              }, {
+                  // Опции.
+                  // Необходимо указать данный тип макета.
+                  iconLayout: 'default#image',
+                  // Своё изображение иконки метки.
+                  iconImageHref: 'assets/atom.png',
+                  // Размеры метки.
+                  iconImageSize: [30, 42],
+                  // Смещение левого верхнего угла иконки относительно
+                  // её "ножки" (точки привязки).
+                  iconImageOffset: [-5, -38]
+              }),
+
+              myPlacemark6 = new ymaps.Placemark([55.752936, 37.652283], {
+                  hintContent: 'Собственный значок метки',
+                  balloonContent: 'улица Воронцово Поле, 10с2'
+              }, {
+                  // Опции.
+                  // Необходимо указать данный тип макета.
+                  iconLayout: 'default#image',
+                  // Своё изображение иконки метки.
+                  iconImageHref: 'assets/atom.png',
+                  // Размеры метки.
+                  iconImageSize: [30, 42],
+                  // Смещение левого верхнего угла иконки относительно
+                  // её "ножки" (точки привязки).
+                  iconImageOffset: [-5, -38]
+              }),
+
+              myPlacemark7 = new ymaps.Placemark([55.809074, 37.581721], {
+                  hintContent: 'Собственный значок метки',
+                  balloonContent: 'Дмитровское шоссе, 2 ст1'
+              }, {
+                  // Опции.
+                  // Необходимо указать данный тип макета.
+                  iconLayout: 'default#image',
+                  // Своё изображение иконки метки.
+                  iconImageHref: 'assets/atom.png',
+                  // Размеры метки.
+                  iconImageSize: [30, 42],
+                  // Смещение левого верхнего угла иконки относительно
+                  // её "ножки" (точки привязки).
+                  iconImageOffset: [-5, -38]
+              }),
+
+              myPlacemark8 = new ymaps.Placemark([55.790342, 37.480058], {
+                  hintContent: 'Собственный значок метки',
+                  balloonContent: 'улица Расплетина, 3'
+              }, {
+                  // Опции.
+                  // Необходимо указать данный тип макета.
+                  iconLayout: 'default#image',
+                  // Своё изображение иконки метки.
+                  iconImageHref: 'assets/atom.png',
+                  // Размеры метки.
+                  iconImageSize: [30, 42],
+                  // Смещение левого верхнего угла иконки относительно
+                  // её "ножки" (точки привязки).
+                  iconImageOffset: [-5, -38]
+              }),
+
+              myPlacemark9 = new ymaps.Placemark([55.656407, 37.527373], {
+                  hintContent: 'Собственный значок метки',
+                  balloonContent: 'улица Обручева, 30/1с1'
+              }, {
+                  // Опции.
+                  // Необходимо указать данный тип макета.
+                  iconLayout: 'default#image',
+                  // Своё изображение иконки метки.
+                  iconImageHref: 'assets/atom.png',
+                  // Размеры метки.
+                  iconImageSize: [30, 42],
+                  // Смещение левого верхнего угла иконки относительно
+                  // её "ножки" (точки привязки).
+                  iconImageOffset: [-5, -38]
+              });
+
+
+          myMap.geoObjects
+              .add(myPlacemark1)
+              .add(myPlacemark2)
+              .add(myPlacemark3)
+              .add(myPlacemark4)
+              .add(myPlacemark5)
+              .add(myPlacemark6)
+              .add(myPlacemark7)
+              .add(myPlacemark8)
+              .add(myPlacemark9);
+      });
+  </script>
 </head>
 <body>
   <app-root></app-root>

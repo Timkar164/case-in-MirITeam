@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { first } from "rxjs/operators";
 import { randomStatus } from "../helpers";
+import {Router} from '@angular/router';
+import {AppService} from '../app.service';
+import {range} from 'rxjs';
 @Component({
   selector: 'app-profille',
   templateUrl: './profille.component.html',
@@ -9,20 +12,34 @@ import { randomStatus } from "../helpers";
 })
 
 export class ProfilleComponent implements OnInit {
+  constructor(private servise: AppService) { }
   tab = 'activity';
   activity:any;
   contacts:any;
+  user:any;
+  mainuser:any;
+  users:any;
+  data:any;
   ngOnInit(): void {
 
-    this.activity=this.getActivity();
-    this.contacts=this.getContacts();
-    console.log(this.contacts);
+    //this.contacts=this.getContacts();
+    this.user = window.localStorage.getItem('userinfo');
+    this.mainuser = JSON.parse(this.user);
+    console.log(this.mainuser);
+    this.servise.get_action(this.mainuser.id).subscribe(value => {
+
+      this.data=value;
+      this.activity=this.data.action;
+      this.contacts=this.data.friend;
+
+      console.log(this.activity);
+      console.log(this.contacts);
+
+
+
+    })
+
   }
-
-
-
-
-
   getStatus() {
     const status = randomStatus();
     console.log(status);
@@ -30,6 +47,40 @@ export class ProfilleComponent implements OnInit {
   }
 
 
+
+
+ /**
+  get_user(){
+    this.servise.get_user().subscribe(value => {
+      console.log(value);
+      if (value.response){
+        this.users=value.items;
+        console.log(this.users);
+        this.byild_data();
+      }
+
+
+    });
+  }
+  byild_data(){
+    this.data=[];
+
+    for(let i=0;i<this.activity.length;i++){
+      this.data.push(this.find_user(Number(this.activity[i].users),this.activity[i].actions));
+
+    }
+    console.log(this.data);
+  }
+  find_user(id,type){
+    console.log(id);
+    for(let i=0;i<this.users.length;i++){
+      if (this.users[i].id ===id){
+        return {'img':this.users[i].img,'name':this.users[i].name,'type':type}
+      }
+    }
+    return false
+  }
+*/
   getActivity() {
     const text = [
       "Добавила новый курс в раздел Учебная комната",

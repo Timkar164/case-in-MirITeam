@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AppService} from '../app.service';
 
 @Component({
   selector: 'app-chat',
@@ -6,53 +7,68 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit {
+  public chats:any;
+  public user:any;
+  public mainuser:any;
   public inputt="";
-  public usermas = [{"img":'assets/images/tany.jpg', "name":"Татьяна Бородина","time":"8:35am","text":"Вы доделали отчет?"},{"img":'assets/images/tim.jpg', "name":"Тимофей Карклин","time":"9:35am","text":"Я скинул документы на почту шефу"},{"img":'assets/images/nik.jpg', "name":"Никита Мараханов","time":"9:40am","text":"Восколько начнем проект?"},{"img":'assets/images/aleks.jpg', "name":"Александр Серышев","time":"10:35am","text":"что вы имелли ввиду?"}];
-  public messages = [{"type": false, "img": "assets/images/v1_921.png","time":"7:30am","text":"Я ваш личный помошник, обращайтесь. Напишите мне 'что ты умеешь?'"}];
-  constructor() { }
+  public val:any;
+  public maindialog:any;
+  public mainperson:any;
+  public messages = [{"type": false, "img": "assets/images/v1_921.png","time":"7:30am","text":"Я ваш личный помошник, обращайтесь. Напишите мне 'что ты умеешь?'", 'sender':200,'receiver':1}];
+  constructor(private servise:AppService) { }
 
   ngOnInit() {
+    this.maindialog=this.messages;
+    this.mainperson={"name":'Личный помошник Ботя','img':'assets/images/v1_921.png','id':200};
+    this.user = window.localStorage.getItem('userinfo');
+    this.mainuser = JSON.parse(this.user);
+    console.log(this.mainuser);
     setTimeout(()=>{                           //<<<---using ()=> syntax
       console.log(1);
       this.botsend('вас вызывают к шефу');
     }, 30000);
+    this.servise.get_mes(this.mainuser.id).subscribe(value => {
+
+      this.chats=value;
+      this.chats=this.chats.items;
+      console.log(this.chats);
+    })
   }
   botsend(txt){
-
-    this.messages.push({"type": false, "img": "assets/images/v1_921.png","time":"8:35am","text": txt});
-
+    if(this.mainperson.id==200) {
+      this.maindialog.push({"type": false, "img": "assets/images/v1_921.png", "time": "8:35am", "text": txt, 'sender': 200, 'receiver': this.mainuser.id});
+    }
   }
-  bot(comand){
-         if (comand==='задачи на день'){
-           this.botsend('Обсуждение проекта Х 9:00-11:30  \n' +
-             'Экскурсия по новому отделу 14:00-14:45\n' +
-             'Тренинг по защите проектов 15:00-16:30')
-         }
 
-    if (comand==='заказать справку'){
-      this.botsend(" > выберите тип справки: - о трудоустройстве, - о заработной плате");
-    }
-
-    if (comand==='задачи на день'){
-      this.botsend('Обсуждение проекта Х 9:00-11:30  \n' +
-        'Экскурсия по новому отделу 14:00-14:45\n' +
-        'Тренинг по защите проектов 15:00-16:30')
-    }
-    if (comand==='о трудоустройстве' ){
-      this.botsend(">Спасибо за заявку! Вам будет прислано уведомление о готовности")
-    }
-    if (comand==='о заработной плате' ){
-      this.botsend(">Спасибо за заявку! Вам будет прислано уведомление о готовности")
-    }
-    if (comand==='что ты умеешь?' ){
-      this.botsend("-задачи на день, -заказать справку, -вид справки, -данные, к кому обратиться, -отпуск, -страховка, -работа")
-    }
-
-  }
   sendmes(txt){
     console.log(txt);
-    this.messages.push({"type": true, "img": "assets/images/avatar.jpg","time":"8:35am","text": txt});
+    this.maindialog.push({"type": true, "img": this.mainuser.img,"time":"8:35am","text": txt,'receiver':this.mainperson.id, 'sender':this.mainuser.id});
+    this.send_sql(txt);
+    if(this.mainperson.id===200){
+    this.servise.bot(txt).subscribe(value => {
+      this.val = value;
+      console.log(value);
+      this.botsend(this.val.bot);
+    });}
 
-    this.bot(txt);
+  }
+  changedialog(user){
+    this.mainperson=user;
+    this.maindialog=[];
+    this.servise.get_dialog(this.mainuser.id,user.id).subscribe(value => {
+      this.maindialog=value;
+      this.maindialog=this.maindialog.items;
+      console.log(this.maindialog);
+    })
+  }
+  go_to_bot(user){
+    this.mainperson=user;
+    this.maindialog=this.messages;
+    console.log(this.maindialog);
+  }
+  send_sql(mes){
+    this.servise.set_message(mes,this.mainuser.id,this.mainperson.id).subscribe(value => {
+      console.log(value)
+    })
   }
 }

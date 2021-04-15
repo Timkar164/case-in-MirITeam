@@ -18,6 +18,7 @@ import {ProfilleComponent} from './profille/profille.component';
 import {KalendarComponent} from './kalendar/kalendar.component';
 
 import {KontaktsComponent} from './kontakts/kontakts.component';
+import {YmapComponent} from './ymap/ymap.component';
 
 const sysroutes: Routes = [
   {path: '' , component: NewbiepageComponent},
@@ -33,7 +34,8 @@ const sysroutes: Routes = [
   {path: 'user' , component: ProfilleComponent},
   {path: 'kalendar' , component: KalendarComponent},
 
-  {path:'contacts', component: KontaktsComponent}
+  {path:'contacts', component: KontaktsComponent},
+  {path:'ymap',component: YmapComponent}
 
 
 ];

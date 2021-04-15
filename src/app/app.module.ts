@@ -19,10 +19,12 @@ import { MycompanyComponent } from './mycompany/mycompany.component';
 import { DocumentComponent } from './document/document.component';
 import { ProfilleComponent } from './profille/profille.component';
 import { KalendarComponent } from './kalendar/kalendar.component';
-
+import { HttpClientModule} from '@angular/common/http';
 import { AvatarComponent } from './avatar/avatar.component';
 import { KontaktsComponent } from './kontakts/kontakts.component';
 import {FormsModule} from "@angular/forms";
+import { AppService} from './app.service';
+import { YmapComponent } from './ymap/ymap.component';
 
 @NgModule({
   declarations: [
@@ -45,12 +47,17 @@ import {FormsModule} from "@angular/forms";
     KalendarComponent,
 
     AvatarComponent,
-    KontaktsComponent
+    KontaktsComponent,
+    YmapComponent
+
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

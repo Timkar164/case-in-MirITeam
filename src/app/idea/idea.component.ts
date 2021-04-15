@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AppService} from '../app.service';
 
 @Component({
   selector: 'app-idea',
@@ -6,15 +7,36 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./idea.component.css']
 })
 export class IdeaComponent implements OnInit {
-  public inputt='';
+  public inputt:any;
   public com='';
-  public ideas =[{"img":'assets/images/tim.jpg',"user": "Карклин Тимофей","name":"создать единый регламент одежды РОСАТОМ","coment":" Цель: улучшить качество одежды, выдаваемой сотрудникам. 1. Зимняя обувь фирмы “Панда” в зимнее время совсем не теплая. Ноги в -30 замерзают даже с шерстяным носком...","date":"23.03.2021","imgs":['assets/images/nik.jpg','assets/images/tany.jpg'],"rez":['assets/images/v1_65.png']}];
-  constructor() { }
+  public mascard:any;
+  public list1 = 18;
+  public list2 = 30;
+
+  public comment ='';
+  public a1;
+  public user:any;
+  public mainuser:any;
+  public ideas:any;
+  constructor(private servise:AppService) { }
 
   ngOnInit() {
+    this.user = window.localStorage.getItem('userinfo');
+    this.mainuser = JSON.parse(this.user);
+    this.servise.get_idea().subscribe(value => {
+
+      this.ideas=value;
+      this.ideas=this.ideas.items;
+
+
+
+
+    })
+
+
   }
  add(name,coment){
-   this.ideas = [{"img":'assets/images/avatar.jpg',"user": "Владимир Жуков","name":name,"coment":coment,"date":"26.03.2021","imgs":[],"rez":[]}].concat(this.ideas);
+   this.ideas = [{"img":this.mainuser.img,"maker": this.mainuser.name,"name":name,"coment":coment,"date":"26.03.2021","imgs":[],"rez":[]}].concat(this.ideas);
  }
  addrez(item){
     console.log(item);

@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent implements OnInit {
+  public card: boolean;
   public text: any;
   public t: boolean;
   public cart= ['<img src="assets/media/4.jpg" width="150px"> <p>Санузел</p> <br> Время уборки: <br>11:15-11:30; 17:45-16:00' , '<img src="assets/media/3.jpg" width="150px"> <p>Кириенко Сергей</p> <br> <br> Должность: Генеральный директор <br><br> Телефон: 8(831) 189-89-89 <br> Почта: zverev@rosatom.ru <br>', '<img src="assets/media/1.jpg" width="150px"> \n' +
@@ -14,9 +15,15 @@ export class CardComponent implements OnInit {
 
   ngOnInit() {
     this.t= false;
+    this.card=true;
+
   }
   myprint(txt){
     this.text=this.cart[txt];
     this.t=!this.t;
+  }
+
+  editcard(){
+    this.card=!this.card;
   }
 }
