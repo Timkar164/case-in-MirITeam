@@ -7,6 +7,7 @@ import {AppService} from '../app.service';
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit {
+  public textt: any;
   public chats:any;
   public user:any;
   public mainuser:any;
@@ -22,16 +23,16 @@ export class ChatComponent implements OnInit {
     this.mainperson={"name":'Личный помошник Ботя','img':'assets/images/v1_921.png','id':200};
     this.user = window.localStorage.getItem('userinfo');
     this.mainuser = JSON.parse(this.user);
-    console.log(this.mainuser);
+
     setTimeout(()=>{                           //<<<---using ()=> syntax
-      console.log(1);
+
       this.botsend('вас вызывают к шефу');
     }, 30000);
     this.servise.get_mes(this.mainuser.id).subscribe(value => {
 
       this.chats=value;
       this.chats=this.chats.items;
-      console.log(this.chats);
+
     })
   }
   botsend(txt){
@@ -41,13 +42,13 @@ export class ChatComponent implements OnInit {
   }
 
   sendmes(txt){
-    console.log(txt);
-    this.maindialog.push({"type": true, "img": this.mainuser.img,"time":"8:35am","text": txt,'receiver':this.mainperson.id, 'sender':this.mainuser.id});
+
+
     this.send_sql(txt);
     if(this.mainperson.id===200){
     this.servise.bot(txt).subscribe(value => {
       this.val = value;
-      console.log(value);
+
       this.botsend(this.val.bot);
     });}
 
@@ -58,17 +59,19 @@ export class ChatComponent implements OnInit {
     this.servise.get_dialog(this.mainuser.id,user.id).subscribe(value => {
       this.maindialog=value;
       this.maindialog=this.maindialog.items;
-      console.log(this.maindialog);
+
     })
   }
   go_to_bot(user){
     this.mainperson=user;
     this.maindialog=this.messages;
-    console.log(this.maindialog);
+
   }
   send_sql(mes){
     this.servise.set_message(mes,this.mainuser.id,this.mainperson.id).subscribe(value => {
-      console.log(value)
+
+      this.textt=value;
+      this.maindialog.push({"type": true, "img": this.mainuser.img,"time":"8:35am","text": this.textt.text,'receiver':this.mainperson.id, 'sender':this.mainuser.id});
     })
   }
 }

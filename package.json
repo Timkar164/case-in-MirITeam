@@ -17,8 +17,8 @@
   "private": true,
   "dependencies": {
     "compression": "*",
-    "express":"*",
-    "body-parser":"*",
+    "express": "*",
+    "body-parser": "*",
     "@angular/animations": "~8.2.5",
     "@angular/common": "~8.2.5",
     "@angular/compiler": "~8.2.5",
@@ -27,6 +27,9 @@
     "@angular/platform-browser": "~8.2.5",
     "@angular/platform-browser-dynamic": "~8.2.5",
     "@angular/router": "~8.2.5",
+    "chart.js": "^2.7.2",
+    "core-js": "^2.5.4",
+    "ng2-charts": "^1.6.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

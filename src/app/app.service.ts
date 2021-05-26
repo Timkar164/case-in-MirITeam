@@ -32,7 +32,7 @@ export class AppService {
   }
 
   get_board(){
-    const  userar = this.http.get('https://flask-api-miriteam.herokuapp.com/get_board');
+    const  userar = this.http.get('http://localhost:8000/get_board');
     return userar;
   }
   get_idea(){
@@ -63,11 +63,33 @@ export class AppService {
     return userar;
   }
  set_message(mes,sender,receiver){
-   const  userar = this.http.get('https://flask-api-miriteam.herokuapp.com/set_data?table=messages&sender='+sender+'&receiver='+receiver+'&date=10.59&text='+mes);
+   const  userar = this.http.get('https://flask-api-miriteam.herokuapp.com/set_message?table=messages&sender='+sender+'&receiver='+receiver+'&date=10.59&text='+mes);
    return userar;
  }
 
+ set_pranik(maker,pipl,type,comment){
+   const  userar = this.http.get('https://flask-api-miriteam.herokuapp.com/set_data?table=board&maker='+maker+'&person='+pipl+'&type=' + type + '&comment='+comment+'&date=27.05.2021');
+   return userar;
+ }
 
+ set_idea(maker,name,comment){
+   const  userar = this.http.get('https://flask-api-miriteam.herokuapp.com/set_data?table=idea&maker='+maker+'&name='+name+'&type=1&comment='+comment+'&date=27.05.2021');
+   return userar;
+ }
 
+ get_metrik(user){
+   const  userar = this.http.get('https://flask-api-miriteam.herokuapp.com/metriks?user='+user);
+   return userar;
+ }
+
+ set_map_metrik(user){
+   const  userar = this.http.get('https://flask-api-miriteam.herokuapp.com/mapmetrik?user='+user);
+   return userar;
+ }
+
+ get_team(user){
+   const  userar = this.http.get('https://flask-api-miriteam.herokuapp.com/commandmetrik?user='+user);
+   return userar;
+ }
 
 }

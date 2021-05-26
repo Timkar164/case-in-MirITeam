@@ -21,7 +21,9 @@ padding-top: 2%;"><b>Лавка идей</b></p>
           </div>
 
           <div class="checkbox">
-            <label><input type="checkbox" value="" >Хочу подать идею анонимно</label>
+            <label><button  value="" (click)="anon=!anon">Хочу подать идею анонимно</button></label>
+            <label *ngIf="!anon">сейчас идея будт подана от вашего лица</label>
+            <label *ngIf="anon">сейчас идея будт подана ананимно</label>
           </div>
 
 

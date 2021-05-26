@@ -22,6 +22,8 @@ export class GingerbreadComponent implements OnInit {
     this.mainuser = JSON.parse(this.user);
     this.servise.get_board().subscribe(value => {
 
+
+      console.log(value);
       this.mascard=value;
       this.mascard=this.mascard.items;
 
@@ -36,11 +38,18 @@ export class GingerbreadComponent implements OnInit {
     console.log(coment);
     this.list1=this.list1+1;
     this.list2=this.list2-1;
-    this.mascard = [{"img":this.mainuser.img,"maker": this.mainuser.name,"type":what,"person":pipl,"comment":coment,"date":"26.03.2021"}].concat(this.mascard);
+    this.mascard = [{"img":this.mainuser.img,"maker": this.mainuser.name,"type":what,"person":pipl,"comment":coment,"date":"27.05.2021"}].concat(this.mascard);
+    this.set_sql(what,pipl,coment);
   }
   retype(type){
     let t=['подготовку документов','за хорошее настроение','за помощь','за проявленную инициативу'];
     return t[type-1]
+  }
+
+  set_sql(what,pipl,comment){
+    this.servise.set_pranik(this.mainuser.id,pipl,what,comment).subscribe(value => {
+      console.log(value)
+    })
   }
 
 }

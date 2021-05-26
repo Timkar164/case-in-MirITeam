@@ -20,6 +20,16 @@ import {KalendarComponent} from './kalendar/kalendar.component';
 import {KontaktsComponent} from './kontakts/kontakts.component';
 import {YmapComponent} from './ymap/ymap.component';
 
+import {MetricsComponent} from "./metrics/metrics.component";
+import { YourmetrikComponent} from "./yourmetrik/yourmetrik.component";
+import {CommandmetrikComponent} from "./commandmetrik/commandmetrik.component";
+
+const metrikroutes: Routes = [
+  {path:'ymetrik', component: CommandmetrikComponent},
+  {path:'', component: YourmetrikComponent},
+  {path:'cmetrik', component: YourmetrikComponent}
+];
+
 const sysroutes: Routes = [
   {path: '' , component: NewbiepageComponent},
   {path: 'chat',  component: ChatComponent},
@@ -33,12 +43,14 @@ const sysroutes: Routes = [
   {path: 'doc' , component: DocumentComponent},
   {path: 'user' , component: ProfilleComponent},
   {path: 'kalendar' , component: KalendarComponent},
-
   {path:'contacts', component: KontaktsComponent},
-  {path:'ymap',component: YmapComponent}
+  {path:'ymap',component: YmapComponent},
+  {path: 'metriks', component: MetricsComponent, children: metrikroutes}
 
 
 ];
+
+
 const routes: Routes = [
   { path: 'auth', component: AuthComponent },
   { path: '', component: SystemComponent, children: sysroutes}

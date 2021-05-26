@@ -25,6 +25,11 @@ import { KontaktsComponent } from './kontakts/kontakts.component';
 import {FormsModule} from "@angular/forms";
 import { AppService} from './app.service';
 import { YmapComponent } from './ymap/ymap.component';
+import { MetricsComponent } from './metrics/metrics.component';
+import { CommandmetrikComponent } from './commandmetrik/commandmetrik.component';
+import { YourmetrikComponent } from './yourmetrik/yourmetrik.component';
+
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -48,7 +53,10 @@ import { YmapComponent } from './ymap/ymap.component';
 
     AvatarComponent,
     KontaktsComponent,
-    YmapComponent
+    YmapComponent,
+    MetricsComponent,
+    CommandmetrikComponent,
+    YourmetrikComponent
 
 
   ],
@@ -56,7 +64,8 @@ import { YmapComponent } from './ymap/ymap.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ChartsModule
 
   ],
   providers: [],

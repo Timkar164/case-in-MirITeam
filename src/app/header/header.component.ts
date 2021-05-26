@@ -15,9 +15,8 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.user = window.localStorage.getItem('userinfo');
     this.mainuser = JSON.parse(this.user);
-    console.log(this.mainuser);
+
     this.img= this.mainuser.img;
-    console.log(this.img);
 
 
   }
