@@ -32,7 +32,7 @@ export class AppService {
   }
 
   get_board(){
-    const  userar = this.http.get('http://localhost:8000/get_board');
+    const  userar = this.http.get('https://flask-api-miriteam.herokuapp.com/get_board');
     return userar;
   }
   get_idea(){
