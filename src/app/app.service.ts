@@ -41,7 +41,7 @@ export class AppService {
   }
 
   get_todo(){
-    const  userar = this.http.get('https://flask-api-miriteam.herokuapp.com/get_data?table=todo');
+     const  userar = this.http.get('https://flask-api-miriteam.herokuapp.com/get_data?table=todo');
     return userar;
   }
 
