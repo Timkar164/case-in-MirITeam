@@ -31,8 +31,8 @@ export class CommandmetrikComponent implements OnInit {
       this.metrik=this.dara.items.metr;
       for (let i=0; i< this.teammetr.length; i++){
          let metsum = 0;
-         metsum=this.teammetr[i].M1+this.teammetr[i].M2+this.teammetr[i].M3;
-        this.chart.chart.data.datasets[0].data[i]=metsum;
+         metsum=this.teammetr[i].M1+this.teammetr[i].M2+this.teammetr[i].M3+this.teammetr[i].M4+this.teammetr[i].M5+this.teammetr[i].M6+this.teammetr[i].M7;
+        this.chart.chart.data.datasets[0].data[i]=metsum/7;
         this.chart.chart.update();
       }
     })
